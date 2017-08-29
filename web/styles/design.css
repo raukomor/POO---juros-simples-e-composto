@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/08/2017, 16:28:16
+    Author     : rodri
+*/
+body{
+    background-color: rgb(69,69,69);
+}
+
+input[type=number]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: rgb(115,154,174);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:background-color 0.5s;
+    
+}
+
+input[type=submit]:hover {
+    background-color: rgb(85,124,144);
+    transition: background-color 0.5s ease-in-out;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.result{
+    font-family: Segoe UI Light;
+    color: rgb(69,69,69);
+/*    border: 2px dashed rgba(69,69,69,0.4);
+    border-radius: 4px;*/
+    padding: 6px;
+}
+
+h1{
+    font-family: Segoe UI Light;
+    color: rgb(69,69,69);
+}
+
+.home{
+    border-radius: 100%;
+    border: 1px solid;
+    color: rgb(69,69,69);
+    font-size: 38px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}

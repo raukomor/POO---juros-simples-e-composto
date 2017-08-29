@@ -38,9 +38,24 @@ public class juros_simples extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet juros_simples</title>");            
+            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +"/styles/design.css' />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet juros_simples at " + request.getContextPath() + "</h1>");
+            out.println("<div>");
+//            out.println("<span class='home' title='Voltar Para o Home'>");
+//            out.println("&#8962;");
+//            out.println("</span>");
+            out.println("<form>");
+            out.println("<h1>Juros Simples</h1>");
+            out.println("<input type='number' name='capital' placeholder='Capital' />");
+            out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' />");
+            out.println("<input type='number' name='periodo' placeholder='Período(Meses)' />");
+            out.println("<h2 class='result'></h2>"); //<<<<<----Lugar para exibir o resultado ------
+            out.println("<input type='submit' value='Calcular'/>");
+            out.println("<br/>");
+            out.println("<br/>");
+            out.println("</form>");
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
