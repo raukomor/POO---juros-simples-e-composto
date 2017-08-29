@@ -37,10 +37,14 @@ public class juros_composto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<style>");
+            out.println("body{background-color:rgb(210,205,230);}");
+            out.println("h1{text-align: center;font-family:arial;}");
+            out.println("</style>");
             out.println("<title>Servlet juros_composto</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet juros_composto at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Cálculo de Juros Composto</h1>");
             out.println("</body>");
             out.println("</html>");
         }
