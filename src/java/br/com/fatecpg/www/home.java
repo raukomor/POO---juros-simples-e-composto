@@ -37,10 +37,38 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");            
+            out.println("<title>Servlet Home</title>");            
+            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +"/styles/design.css' />");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath() + "</h1>");
+            out.println("<div class=\"container\">");
+            out.println("<head>");
+            out.println("<h1>Juros Simples e Juros Composto</h1>");
+            out.println("</head>");
+            //out.println("<nav>");
+            out.println("<ul>");
+            out.println("<li><a href='juros-simples'>Juros Simples</a></li>");
+            out.println("<li><a href='juros-composto'>Juros Compostos</a></li>");
+            out.println("</br>");
+            /**out.println("<img src=''/>"); */
+            out.println("</ul>");
+            //out.println("</nav>");
+            out.println("<article>");
+            out.println("<h1>Equipe</h1><br/>");
+            out.println("<h4>Denis Olmedo da Silva</h4>");
+            out.println("<h4>Derek Souza Szabo</h4>");
+            out.println("<h4>Gabriela Santos Duarte</h4>");
+            out.println("<h4>Rodrigo Corneta Ferreira de Alcantara</h4>");
+            out.println("<h4>Rodrigo de Lima Figueiredo</h4>");
+            out.println("</article>");
+            out.println("<article>");
+            out.println("</br>");
+            out.println("</br>");
+            out.println("</br>");
+            
+            out.println("</article>");
+            out.println("<footer>Copyright &copy; FATEC PG - POO - Noturno</footer>");
+            out.println("</div>");    
             out.println("</body>");
             out.println("</html>");
         }

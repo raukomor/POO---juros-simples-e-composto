@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
  */
 @WebServlet(name = "juros_simples", urlPatterns = {"/juros-simples"})
 public class juros_simples extends HttpServlet {
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,10 +34,13 @@ public class juros_simples extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -45,6 +48,10 @@ public class juros_simples extends HttpServlet {
             out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +"/styles/design.css' />");
             out.println("</head>");
             out.println("<body>");
+//            out.println("<script type='text/javascript'>");
+//            out.println("<script type='text/javascript'>");
+//            out.println("</script>");
+            
             out.println("<div>");
             out.println("<a href='home'>");
             out.println("<span class='home' title='Voltar Para o Home' href='home.php'>");
@@ -56,6 +63,7 @@ public class juros_simples extends HttpServlet {
             out.println("<input type='number' name='capital' placeholder='Capital' required/>");
             out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' required/>");
             out.println("<input type='number' name='periodo' placeholder='Período(Meses)' required/>");
+             
             try{
                 double c;
                 c = Double.parseDouble(request.getParameter("capital"));
@@ -67,14 +75,15 @@ public class juros_simples extends HttpServlet {
                 j = c*i*t;
                 double m;
                 m=j+c;
-				out.println("<input type='submit' value='Calcular'/>");
-                out.println("<h2 class='result'>Juros = "+ j +"<br>Montante = "+m+"</h2>");
+                out.println("<h2 id='re' class='result'>Juros = "+ j +"<br>Montante = "+m+"</h2>");
+                
+                request.removeAttribute("capital");
             }
             catch (Exception ex){
-                out.println("<h2 style = 'color:red'>"
-                        +"Parâmetros inválidos!"
-                        +"</h2>");
+                //out.println("<h2 style = 'color:red'>Parâmetros inválidos!</h2>");
             }
+            out.println("<input type='submit' value='Calcular'/>");
+            
             
             out.println("<br/>");
             out.println("<br/>");
