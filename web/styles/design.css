@@ -49,8 +49,6 @@ div {
 .result{
     font-family: Segoe UI Light;
     color: rgb(69,69,69);
-/*    border: 2px dashed rgba(69,69,69,0.4);
-    border-radius: 4px;*/
     padding: 6px;
 }
 
@@ -104,18 +102,6 @@ li{
 li:hover{
     background-color: rgba(53,53,53,0.1);
     transition: 0.5s;
-}
-
-.home{
-    border-radius: 100%;
-    border: 1px solid;
-    color: rgb(69,69,69);
-    font-size: 38px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    cursor: pointer;
 }
 
 .home{

@@ -13,10 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
 
 /**
  *
@@ -49,9 +45,6 @@ public class juros_simples extends HttpServlet {
             out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +"/styles/design.css' />");
             out.println("</head>");
             out.println("<body>");
-//            out.println("<script type='text/javascript'>");
-//            out.println("<script type='text/javascript'>");
-//            out.println("</script>");
             
             out.println("<div>");
             out.println("<a href='home'>");
@@ -81,9 +74,8 @@ public class juros_simples extends HttpServlet {
                 }
             }
             catch (Exception ex){
-                //out.println("<h2 style = 'color:red'>Parâmetros inválidos!</h2>");
+                out.println("<h2 style = 'color:red'>Parâmetros inválidos!</h2>");
             }
-            
             
             out.println("<br/>");
             out.println("<br/>");

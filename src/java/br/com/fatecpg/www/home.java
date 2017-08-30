@@ -45,14 +45,11 @@ public class home extends HttpServlet {
             out.println("<head>");
             out.println("<h1>Juros Simples e Juros Composto</h1>");
             out.println("</head>");
-            //out.println("<nav>");
             out.println("<ul>");
             out.println("<li><a href='juros-simples'>Juros Simples</a></li>");
             out.println("<li><a href='juros-composto'>Juros Compostos</a></li>");
             out.println("</br>");
-            /**out.println("<img src=''/>"); */
             out.println("</ul>");
-            //out.println("</nav>");
             out.println("<article>");
             out.println("<h1>Equipe</h1><br/>");
             out.println("<h4>Denis Olmedo da Silva</h4>");
