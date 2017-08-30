@@ -67,18 +67,18 @@ public class juros_simples extends HttpServlet {
             out.println("<input type='submit' value='Calcular'/>");
             try{
                 double c;
-                c = Double.parseDouble(request.getParameter("capital"));
-                double i;
-                i = Double.parseDouble(request.getParameter("taxa"));
-                double t;
-                t = Double.parseDouble(request.getParameter("periodo"));
                 double j;
-                j = c*i*(t/100);
-                double m;
-                m=j+c;
-                out.println("<h2 id='re' class='result'>Juros = "+ NumberFormat.getCurrencyInstance().format(j) +"<br>Montante = "+NumberFormat.getCurrencyInstance().format(m)+"</h2>");
-                
-                request.removeAttribute("capital");
+                double i;
+                double t;
+                if (request.getParameter("capital")!=null){
+                    c = Double.parseDouble(request.getParameter("capital"));
+                    i = Double.parseDouble(request.getParameter("taxa"));
+                    t = Double.parseDouble(request.getParameter("periodo"));
+                    j = c*i*(t/100);
+                    double m;
+                    m=j+c;
+                    out.println("<h2 id='re' class='result'>Juros = "+ NumberFormat.getCurrencyInstance().format(j) +"<br>Montante = "+NumberFormat.getCurrencyInstance().format(m)+"</h2>");
+                }
             }
             catch (Exception ex){
                 //out.println("<h2 style = 'color:red'>Parâmetros inválidos!</h2>");
@@ -88,6 +88,7 @@ public class juros_simples extends HttpServlet {
             out.println("<br/>");
             out.println("<br/>");
             out.println("</form>");
+            out.println("<footer>Copyright &copy; FATEC PG - POO - Noturno</footer>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");

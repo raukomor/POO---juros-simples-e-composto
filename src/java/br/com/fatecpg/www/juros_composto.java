@@ -58,32 +58,38 @@ public class juros_composto extends HttpServlet {
             out.println("<br/>");
             out.println("<br/>");
             try{
-                double capital=Double.parseDouble(request.getParameter("capital"));
-                double taxa=Double.parseDouble(request.getParameter("taxa"));
-                double periodo=Double.parseDouble(request.getParameter("periodo"));
-                double rentab=Double.parseDouble(request.getParameter("periodo"));
-                if (capital>0 && taxa>0 && periodo>0){
-                    out.println("<h2 class='result'>Calculo de capital "+NumberFormat.getCurrencyInstance().format(capital));
-                    out.printf(" investido por %.0f meses a juros mensais de %.2f",periodo,taxa);
-                    out.println("%</h2>");
-                    out.println("<table>");
-                    out.println("<tr><th>Período</th><th>Capital</th><th>Rentabilidade</th><th>Total</th></tr>");
-                    for (int i=1; i<= periodo; i++){
-                        out.println("<tr>");
-                        out.println("<td>" + (i) + "</td>");
-                        out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
-                        rentab = capital*(taxa/100);
-                        out.println("<td>" + NumberFormat.getCurrencyInstance().format(rentab) + "</td>");
-                        capital *= (taxa/100+1);
-                        out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
-                        out.print("</tr>");
+                double capital;
+                double taxa;
+                double periodo;
+                double rentab;
+                if (request.getParameter("capital")!=null){
+                    capital=Double.parseDouble(request.getParameter("capital"));
+                    taxa=Double.parseDouble(request.getParameter("taxa"));
+                    periodo=Double.parseDouble(request.getParameter("periodo"));
+                    if (capital>0 && taxa>0 && periodo>0){
+                        out.println("<h2 class='result'>Calculo de capital "+NumberFormat.getCurrencyInstance().format(capital));
+                        out.printf(" investido por %.0f meses a juros mensais de %.2f",periodo,taxa);
+                        out.println("%</h2>");
+                        out.println("<table>");
+                        out.println("<tr><th>Período</th><th>Capital</th><th>Rentabilidade</th><th>Total</th></tr>");
+                        for (int i=1; i<= periodo; i++){
+                            out.println("<tr>");
+                            out.println("<td>" + (i) + "</td>");
+                            out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
+                            rentab = capital*(taxa/100);
+                            out.println("<td>" + NumberFormat.getCurrencyInstance().format(rentab) + "</td>");
+                            capital *= (taxa/100+1);
+                            out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
+                            out.print("</tr>");
+                        }
+                        out.println("</table>");
+                        out.println("<h2 class='result'>O capital gerado foi "+NumberFormat.getCurrencyInstance().format(capital)+"</h2>");
                     }
-                    out.println("</table>");
-                    out.println("<h2 class='result'>O capital gerado foi "+NumberFormat.getCurrencyInstance().format(capital)+"</h2>");
                 }
             } catch (Exception ex) {
                 out.println("<h2 class='result'>Erro nos parametros</h2>");
             }
+            out.println("<footer>Copyright &copy; FATEC PG - POO - Noturno</footer>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
