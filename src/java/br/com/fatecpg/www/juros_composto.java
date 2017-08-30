@@ -50,7 +50,7 @@ public class juros_composto extends HttpServlet {
             out.println("</a>");
             out.println("<form>");
             out.println("<h1>Juros Compostos</h1>");
-            out.println("<input type='number' name='capital' placeholder='Capital' step=0.01  required/>");
+            out.println("<input type='number' name='capital' placeholder='Capital Inicial' step=0.01  required/>");
             out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' step=0.01  required/>");
             out.println("<input type='number' name='periodo' placeholder='Período(Meses)' required/>");
             out.println("<input type='submit' value='Calcular'/>");
@@ -60,18 +60,26 @@ public class juros_composto extends HttpServlet {
             double capital=Double.parseDouble(request.getParameter("capital"));
             double taxa=Double.parseDouble(request.getParameter("taxa"));
             double periodo=Double.parseDouble(request.getParameter("periodo"));
-            out.println("<table border='1'>");
-            out.println("<tr><th>Período</th><th>Capital</th><th>Juros</th><th>Total</th></tr>");
-            for (int i=0; i<= periodo - 1; i++) {              
-                out.print("<tr>");
-                out.println("<th>" + (i+1) + "</th>");
-                out.println("<td>" + "R$"+capital + "</td>");
-                out.println("<td>" + taxa+"%" + "</td>");
-                capital *= (taxa/100+1);
-                out.println("<td>" + "R$"+capital + "</td>");
-                out.print("</tr>");
+            double rentab=Double.parseDouble(request.getParameter("periodo"));
+            if (capital>0 && taxa>0 && periodo>0){
+                out.println("<h2 class='result'>Calculo de capital "+NumberFormat.getCurrencyInstance().format(capital));
+                out.printf(" investido por %.0f meses a juros mensais de %.2f",periodo,taxa);
+                out.println("%</h2>");
+                out.println("<table>");
+                out.println("<tr><th>Período</th><th>Capital</th><th>Rentabilidade</th><th>Total</th></tr>");
+                for (int i=1; i<= periodo; i++){
+                    out.println("<tr>");
+                    out.println("<td>" + (i) + "</td>");
+                    out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
+                    rentab = capital*(taxa/100);
+                    out.println("<td>" + NumberFormat.getCurrencyInstance().format(rentab) + "</td>");
+                    capital *= (taxa/100+1);
+                    out.println("<td>" + NumberFormat.getCurrencyInstance().format(capital) + "</td>");
+                    out.print("</tr>");
+                }
+                out.println("</table>");
+                out.println("<h2 class='result'>O capital gerado foi "+NumberFormat.getCurrencyInstance().format(capital)+"</h2>");
             }
-            out.println("</table>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
