@@ -12,6 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 /**
  *
@@ -42,14 +46,16 @@ public class juros_simples extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<div>");
-//            out.println("<span class='home' title='Voltar Para o Home'>");
-//            out.println("&#8962;");
-//            out.println("</span>");
+            out.println("<a href='home'>");
+            out.println("<span class='home' title='Voltar Para o Home' href='home.php'>");
+            out.println("<img src='" + request.getContextPath() +"/images/home.png' />");
+            out.println("</span>");
+            out.println("</a>");
             out.println("<form>");
             out.println("<h1>Juros Simples</h1>");
-            out.println("<input type='number' name='capital' placeholder='Capital' />");
-            out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' />");
-            out.println("<input type='number' name='periodo' placeholder='Período(Meses)' />");
+            out.println("<input type='number' name='capital' placeholder='Capital' required/>");
+            out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' required/>");
+            out.println("<input type='number' name='periodo' placeholder='Período(Meses)' required/>");
             out.println("<h2 class='result'></h2>"); //<<<<<----Lugar para exibir o resultado ------
             out.println("<input type='submit' value='Calcular'/>");
             out.println("<br/>");
@@ -58,6 +64,7 @@ public class juros_simples extends HttpServlet {
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
+    
         }
     }
 

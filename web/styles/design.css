@@ -69,3 +69,26 @@ h1{
     padding-bottom: 5px;
     cursor: pointer;
 }
+
+.home{
+    border-radius: 100%;
+    border: 1px solid;
+    color: rgb(69,69,69);
+    font-size: 38px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: background-image 0.5s;
+}
+
+.home img{
+    width: 28px;
+    height: 25px;
+}
+
+.home:hover{
+    background-color: rgba(53,53,53,0.1);
+    transition: 0.5s;
+}
