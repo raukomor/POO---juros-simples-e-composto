@@ -38,7 +38,7 @@ public class juros_composto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet juros compostos</title>");            
+            out.println("<title>Servlet juros compostos</title>");
             out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +"/styles/design.css' />");
             out.println("</head>");
             out.println("<body>");
@@ -58,37 +58,20 @@ public class juros_composto extends HttpServlet {
             out.println("<br/>");
             out.println("<br/>");
             double capital=Double.parseDouble(request.getParameter("capital"));
-            double taxa=Double.parseDouble(request.getParameter("taxa"))/100;
+            double taxa=Double.parseDouble(request.getParameter("taxa"));
             double periodo=Double.parseDouble(request.getParameter("periodo"));
-            double prest=0;
-            double juros=0;
-            double amort=0;
-            double saldo_dev=capital;
-            if (capital>0 && taxa>0 && periodo>0){
-                out.println("<h2 class=\"result\">Resultado</h2>");
-                prest=capital/((1-Math.pow((1+taxa),-periodo))/taxa);
-                out.println("<table cellpadding=\"10\">");
-                out.println("<tr class='tabela_titulo'><th>Parcela</th><th>Saldo devedor</th><th>Amortização</th><th>Juros</th><th>Prestação</th></tr>");
-                for (int i = 1; i <= periodo; i++) {
-                    juros=saldo_dev*taxa;
-                    amort=prest-juros;
-                    saldo_dev=saldo_dev-amort;
-                    out.print("<tr class=\"tabela_linha");
-                    if (i%2==0)
-                        out.print(" tabela_linha_cor");
-                    out.println("\">");
-                    out.println("<td>" + i + "</td>");
-                    out.print("<td>");
-                    if (saldo_dev>0)
-                        out.println(NumberFormat.getCurrencyInstance().format(saldo_dev));
-                    out.println("</td>");
-                    out.println("<td>"+NumberFormat.getCurrencyInstance().format(amort)+"</td>");
-                    out.println("<td>"+NumberFormat.getCurrencyInstance().format(juros)+"</td>");
-                    out.println("<th>"+NumberFormat.getCurrencyInstance().format(prest)+"</th>");
-                    out.println("</tr>");
-                }
-                out.println("</table>");
+            out.println("<table border='1'>");
+            out.println("<tr><th>Período</th><th>Capital</th><th>Juros</th><th>Total</th></tr>");
+            for (int i=0; i<= periodo - 1; i++) {              
+                out.print("<tr>");
+                out.println("<th>" + (i+1) + "</th>");
+                out.println("<td>" + "R$"+capital + "</td>");
+                out.println("<td>" + taxa+"%" + "</td>");
+                capital *= (taxa/100+1);
+                out.println("<td>" + "R$"+capital + "</td>");
+                out.print("</tr>");
             }
+            out.println("</table>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
