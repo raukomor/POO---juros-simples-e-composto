@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 
 /**
  *
- * @author rodri
+ * @author Derek
  */
 @WebServlet(name = "juros_simples", urlPatterns = {"/juros-simples"})
 public class juros_simples extends HttpServlet {
@@ -56,8 +56,26 @@ public class juros_simples extends HttpServlet {
             out.println("<input type='number' name='capital' placeholder='Capital' required/>");
             out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' required/>");
             out.println("<input type='number' name='periodo' placeholder='Período(Meses)' required/>");
-            out.println("<h2 class='result'></h2>"); //<<<<<----Lugar para exibir o resultado ------
-            out.println("<input type='submit' value='Calcular'/>");
+            try{
+                double c;
+                c = Double.parseDouble(request.getParameter("capital"));
+                double i;
+                i = Double.parseDouble(request.getParameter("taxa"));
+                double t;
+                t = Double.parseDouble(request.getParameter("periodo"));
+                double j;
+                j = c*i*t;
+                double m;
+                m=j+c;
+				out.println("<input type='submit' value='Calcular'/>");
+                out.println("<h2 class='result'>Juros = "+ j +"<br>Montante = "+m+"</h2>");
+            }
+            catch (Exception ex){
+                out.println("<h2 style = 'color:red'>"
+                        +"Parâmetros inválidos!"
+                        +"</h2>");
+            }
+            
             out.println("<br/>");
             out.println("<br/>");
             out.println("</form>");

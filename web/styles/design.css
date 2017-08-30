@@ -53,20 +53,24 @@ div {
     padding: 6px;
 }
 
-.tabela_titulo{
-    font-family: Segoe UI Light;
-    color: #064a63;
-    padding: 60px;
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
     background-color: #b2d7e4;
 }
-.tabela_linha{
+
+th, td {
     font-family: Segoe UI Light;
-    color: #1283ac;
-    padding: 4px;
+    color: #064a63;
+    text-align: left;
+    padding: 15px;
 }
-.tabela_linha_cor{
-    background-color: #def1f8;
-}
+
+tr:nth-child(even){background-color: #def1f8}
+
 
 h1{
     font-family: Segoe UI Light;
