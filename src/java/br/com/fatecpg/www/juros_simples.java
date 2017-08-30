@@ -7,6 +7,7 @@ package br.com.fatecpg.www;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,10 +61,10 @@ public class juros_simples extends HttpServlet {
             out.println("</a>");
             out.println("<form>");
             out.println("<h1>Juros Simples</h1>");
-            out.println("<input type='number' name='capital' placeholder='Capital' required/>");
-            out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' required/>");
+            out.println("<input type='number' name='capital' placeholder='Capital' step=\"0.01\" required/>");
+            out.println("<input type='number' name='taxa' placeholder='Taxa de Juros' step='0.01' required/>");
             out.println("<input type='number' name='periodo' placeholder='Período(Meses)' required/>");
-             
+            out.println("<input type='submit' value='Calcular'/>");
             try{
                 double c;
                 c = Double.parseDouble(request.getParameter("capital"));
@@ -72,17 +73,16 @@ public class juros_simples extends HttpServlet {
                 double t;
                 t = Double.parseDouble(request.getParameter("periodo"));
                 double j;
-                j = c*i*t;
+                j = c*i*(t/100);
                 double m;
                 m=j+c;
-                out.println("<h2 id='re' class='result'>Juros = "+ j +"<br>Montante = "+m+"</h2>");
+                out.println("<h2 id='re' class='result'>Juros = "+ NumberFormat.getCurrencyInstance().format(j) +"<br>Montante = "+NumberFormat.getCurrencyInstance().format(m)+"</h2>");
                 
                 request.removeAttribute("capital");
             }
             catch (Exception ex){
                 //out.println("<h2 style = 'color:red'>Parâmetros inválidos!</h2>");
             }
-            out.println("<input type='submit' value='Calcular'/>");
             
             
             out.println("<br/>");
