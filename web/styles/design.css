@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 body{
     background-color: rgb(69,69,69);
+    font-family: Segoe UI Light;
 }
 
 input[type=number]{
